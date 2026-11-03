@@ -1,10 +1,9 @@
 import { Product } from "../types/products";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import { serverFetch } from "@/src/lib/apiUrl";
 
 export const getAllProducts = async () => {
     try {
-        const response = await fetch(`${API_URL}/products`, {
+        const response = await serverFetch("/products", {
             next: { revalidate: 60 },
         })
         if (!response.ok) {
@@ -33,7 +32,7 @@ export const getAllProducts = async () => {
 
 export const getProduct = async (params: string) => {
     try {
-        const response = await fetch(`${API_URL}/products/${params}`, {
+        const response = await serverFetch(`/products/${params}`, {
             next: { revalidate: 60 }
         })
         if (response.status === 401) return null;

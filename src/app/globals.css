@@ -16,13 +16,15 @@
     /* Firefox */
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-    color: rgb(215, 215, 215) !important;
-    width: 20px !important;
+.hero-swiper {
+    --swiper-navigation-size: 16px;
 }
 
-/* Hero slider — zamonaviy pagination nuqtalari */
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+    display: none !important;
+}
+
 .hero-swiper .swiper-pagination-bullet {
     width: 8px;
     height: 8px;
@@ -36,29 +38,6 @@
     border-radius: 9999px;
     background: #4caf7d;
     opacity: 1;
-}
-
-/* Navigatsiya strelkalarini doira ichiga joylash */
-.hero-swiper .swiper-button-next,
-.hero-swiper .swiper-button-prev {
-    width: 40px !important;
-    height: 40px;
-    border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.14);
-    backdrop-filter: blur(6px);
-    color: #ffffff !important;
-    transition: background 0.3s ease;
-}
-
-.hero-swiper .swiper-button-next:hover,
-.hero-swiper .swiper-button-prev:hover {
-    background: rgba(76, 175, 125, 0.85);
-}
-
-.hero-swiper .swiper-button-next::after,
-.hero-swiper .swiper-button-prev::after {
-    font-size: 15px !important;
-    font-weight: 700;
 }
 
 .scrollbar-hide {

@@ -1,8 +1,8 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import { serverFetch } from "@/src/lib/apiUrl";
 
 export const getBanners = async () => {
     try {
-        const response = await fetch(`${API_URL}/banners`, {
+        const response = await serverFetch("/banners", {
             next: { revalidate: 60 }
         })
         if (!response.ok) throw new Error("Bannerlarni yuklab bo'lmadi");

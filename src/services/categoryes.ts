@@ -1,8 +1,8 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import { serverFetch } from "@/src/lib/apiUrl";
 
 export const allCategoryes = async () => {
     try {
-        const response = await fetch(`${API_URL}/categories`, {
+        const response = await serverFetch("/categories", {
             next: { revalidate: 60 * 60 }
         })
         if (!response.ok) throw new Error("Kategoriyalarni yuklab bo'lmadi");

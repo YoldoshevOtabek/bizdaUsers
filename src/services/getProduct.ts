@@ -1,8 +1,8 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import { serverFetch } from "@/src/lib/apiUrl";
 
 export const getProduct = async (params: string | null | undefined) => {
     try {
-        const response = await fetch(`${API_URL}/products${params ? "?" + params : ""}`, {
+        const response = await serverFetch(`/products${params ? "?" + params : ""}`, {
             next: { revalidate: 60 },
         });
         if (response.status === 401) return [];

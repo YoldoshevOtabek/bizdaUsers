@@ -1,7 +1,14 @@
 import { allCategoryes } from '@/src/services/categoryes'
 import { Category } from '@/src/features/categories/types/categoryes'
+import { pageMeta } from '@/src/lib/seo'
 import Link from 'next/link'
 import { Grid2x2 } from 'lucide-react'
+
+export const metadata = pageMeta(
+  "Kategoriyalar",
+  "Dealper mahsulot kategoriyalari: smartfon, noutbuk, audio va boshqalar.",
+  "/categories",
+)
 
 export default async function Categories() {
   const categories = await allCategoryes()

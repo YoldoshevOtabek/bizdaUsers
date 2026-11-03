@@ -1,3 +1,5 @@
+import { API_URL } from "./apiUrl";
+
 export const formatPrice = (price: number | string | null | undefined) =>
   Number(price || 0).toLocaleString("en-US").replace(/,/g, " ") + " so'm";
 
@@ -15,7 +17,7 @@ export const mediaUrl = (url?: string | null) => {
   if (url.startsWith("http") || url.startsWith("data:") || url.startsWith("blob:")) {
     return url;
   }
-  const origin = (process.env.NEXT_PUBLIC_API_URL || "").replace(/\/api\/?$/, "");
+  const origin = API_URL.replace(/\/api\/?$/, "");
   return `${origin}${url.startsWith("/") ? url : `/${url}`}`;
 };
 
