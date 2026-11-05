@@ -31,7 +31,7 @@ return (
     {brands.map((brand) => (
       <Link
         key={brand.id}
-        href={`/brands/${brand.slug}`}
+        href={`/products?brand=${encodeURIComponent(brand.slug)}&page=1&limit=20`}
         className="group flex w-36 shrink-0 flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-4 transition duration-300 hover:-translate-y-1  hover:shadow-sm"
       >
         <div className="relative flex h-24 w-full items-center justify-center overflow-hidden rounded-xl bg-gray-50 p-3">

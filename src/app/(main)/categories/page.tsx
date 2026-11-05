@@ -6,7 +6,7 @@ import { Grid2x2 } from 'lucide-react'
 
 export const metadata = pageMeta(
   "Kategoriyalar",
-  "Dealper mahsulot kategoriyalari: smartfon, noutbuk, audio va boshqalar.",
+  "Bizda mahsulot kategoriyalari: smartfon, noutbuk, audio va boshqalar.",
   "/categories",
 )
 

@@ -170,6 +170,9 @@ export default function Filter({
       params.set('maxPrice', String(values.maxPrice))
     }
 
+    params.set('page', '1')
+    params.set('limit', '20')
+
     const query = params.toString()
     const url = query ? `${pathname}?${query}` : pathname
 

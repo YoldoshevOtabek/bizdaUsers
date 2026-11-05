@@ -143,7 +143,7 @@ export default async function ProductDetail({ id }: { id: string }) {
           <div className="flex flex-col">
             <div className="mb-3 flex flex-wrap items-center gap-2">
               <span className="rounded-full bg-[#edf8ee] px-3 py-1 text-xs font-semibold text-[#399765]">
-                {product.brand?.name || "Dealport"}
+                {product.brand?.name || "Bizda"}
               </span>
 
               {product.category?.name && (

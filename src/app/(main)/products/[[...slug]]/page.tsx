@@ -3,9 +3,11 @@ import Products from "@/src/features/products/components/Products";
 import { getProduct as getProductById } from "@/src/features/products/services/getProducts";
 import { getProduct } from "@/src/services/getProduct";
 import { allCategoryes } from "@/src/services/categoryes";
+import { getBrands } from "@/src/services/getBrands";
 import { pageMeta } from "@/src/lib/seo";
 import { siteConfig } from "@/src/lib/site";
 import { mediaUrl } from "@/src/lib/format";
+import { withProductPagination } from "@/src/lib/productsQuery";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import type { Category } from "@/src/features/categories/types/categoryes";
@@ -23,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!slug || slug.length === 0) {
     return pageMeta(
       "Mahsulotlar",
-      "Dealper katalogi: smartfon, noutbuk, audio va boshqa texnika.",
+      "Bizda katalogi: smartfon, noutbuk, audio va boshqa texnika.",
       "/products",
     );
   }
@@ -34,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const name = category?.name || slug[0];
     return pageMeta(
       name,
-      category?.description || `${name} kategoriyasidagi mahsulotlar — Dealper.`,
+      category?.description || `${name} kategoriyasidagi mahsulotlar — Bizda.`,
       `/products/${slug[0]}`,
     );
   }
@@ -48,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     product.images?.find((item: { isMain?: boolean }) => item.isMain)?.url ||
     product.images?.[0]?.url;
   const description =
-    product.shortDescription || product.description || `${product.name} — Dealper do‘konida.`;
+    product.shortDescription || product.description || `${product.name} — Bizda do‘konida.`;
   const meta = pageMeta(product.name, description, `/products/${slug[0]}/${slug[1]}`);
 
   if (image) {
@@ -70,34 +72,37 @@ export default async function Page({
 }: Props) {
   const { slug } = await params;
   const searchParam = await searchParams;
-  const query = new URLSearchParams();
-
-  Object.entries(searchParam).forEach(([key, value]) => {
-    if (Array.isArray(value)) {
-      value.forEach((item) => query.append(key, item));
-    } else if (value !== undefined) {
-      query.append(key, value);
-    }
-  });
-
+  const query = withProductPagination(searchParam);
   const queryString = query.toString();
 
+  const sort = query.get("sort");
+  const heading =
+    sort === "top"
+      ? "Top mahsulotlar"
+      : sort === "best-selling"
+        ? "Ko'p sotilganlar"
+        : "";
+
   if (!slug || slug.length === 0) {
-    const data = await getProduct(queryString || null);
-    return <Products slug="" data={data} />;
+    const { data, meta } = await getProduct(queryString);
+    let title = heading || "Mahsulotlar";
+    const brandSlug = query.get("brand");
+    if (!heading && brandSlug) {
+      const brands = await getBrands();
+      const brand = brands.find((item: { slug: string; name: string }) => item.slug === brandSlug);
+      title = brand?.name || brandSlug;
+    }
+    return <Products slug={title} data={data} meta={meta} />;
   }
 
   if (slug.length === 1) {
     const category = `category=${encodeURIComponent(slug[0])}`;
-    const finalQuery = [category, queryString]
-      .filter(Boolean)
-      .join("&");
-    const data = await getProduct(finalQuery);
-
-    return <Products slug={slug[0]} data={data} />;
+    const { data, meta } = await getProduct(`${category}&${queryString}`);
+    return <Products slug={heading || slug[0]} data={data} meta={meta} />;
   }
-  if(slug?.length==2){
-    return <ProductDetail id={slug[1]}/>
+
+  if (slug.length === 2) {
+    return <ProductDetail id={slug[1]} />;
   }
 
   return notFound();

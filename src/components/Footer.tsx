@@ -35,7 +35,7 @@ export default function Footer() {
                     <Link href="/">
                         <Image
                             src="/img/logo.png"
-                            alt="Dealper"
+                            alt="Bizda"
                             width={150}
                             height={54}
                             style={{ height: 44, width: "auto" }}
@@ -107,7 +107,7 @@ export default function Footer() {
 
             <div className='border-t border-[rgba(78,166,117,1)]'>
                 <div className='mx-auto flex w-full max-w-310 flex-col items-center justify-between gap-2 px-4 py-4 text-center sm:flex-row sm:text-left'>
-                    <p className='text-sm text-[rgba(0,0,0,0.5)]'>© 2026 Dealper. Barcha huquqlar himoyalangan</p>
+                    <p className='text-sm text-[rgba(0,0,0,0.5)]'>© 2026 Bizda. Barcha huquqlar himoyalangan</p>
                     <p className='text-sm text-[rgba(0,0,0,0.5)]'>SSL Secure orqali himoyalangan</p>
                 </div>
             </div>

@@ -11,6 +11,11 @@ export function pageMeta(
   return {
     title: options?.absolute ? { absolute: title } : title,
     description,
+    icons: {
+      icon: [{ url: siteConfig.favicon, type: "image/x-icon", sizes: "any" }],
+      shortcut: siteConfig.favicon,
+      apple: siteConfig.favicon,
+    },
     alternates: { canonical: url },
     openGraph: {
       title: `${title} | ${siteConfig.name}`,

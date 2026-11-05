@@ -14,7 +14,7 @@ export default async function BestSelling() {
             <SectionHeader
                 title="Ko'p sotilganlar"
                 subtitle="Xaridorlar eng ko'p tanlayotgan mahsulotlar"
-                href="/products"
+                href="/products?sort=best-selling&page=1&limit=20"
             />
             <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4'>
                 {

@@ -14,7 +14,7 @@ export default async function TrendingProducts() {
             <SectionHeader
                 title="Top mahsulotlar"
                 subtitle="Hozir eng ko'p qidirilayotgan mahsulotlar"
-                href="/products"
+                href="/products?sort=top&page=1&limit=20"
             />
             <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4'>
                 {

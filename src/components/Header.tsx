@@ -38,7 +38,11 @@ export default function Header() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const query = search.trim()
-    router.push(query ? `/products?search=${encodeURIComponent(query)}` : "/products")
+    router.push(
+      query
+        ? `/products?search=${encodeURIComponent(query)}&page=1&limit=20`
+        : "/products?page=1&limit=20",
+    )
   }
 
   return (
@@ -48,7 +52,7 @@ export default function Header() {
         <Link href="/" className="shrink-0">
           <Image
             src="/img/logo.png"
-            alt="Dealper"
+            alt="Bizda"
             width={130}
             height={47}
             priority

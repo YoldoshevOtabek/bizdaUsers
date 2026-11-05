@@ -19,9 +19,17 @@ export default function SectionHeader({
         <div className="flex items-center gap-3">
           {/* Brend rangidagi vertikal aksent chizig'i */}
           <span className="h-9 w-1.5 rounded-full bg-gradient-to-b from-[#4caf7d] to-[#2e7d54] shadow-sm shadow-[#4caf7d]/30" />
-          <h2 className="text-[26px] font-extrabold tracking-tight text-gray-900 sm:text-[30px]">
-            {title}
-          </h2>
+          {href ? (
+            <Link href={href} className="transition hover:text-[#2f8a58]">
+              <h2 className="text-[26px] font-extrabold tracking-tight text-gray-900 sm:text-[30px]">
+                {title}
+              </h2>
+            </Link>
+          ) : (
+            <h2 className="text-[26px] font-extrabold tracking-tight text-gray-900 sm:text-[30px]">
+              {title}
+            </h2>
+          )}
         </div>
         {subtitle && (
           <p className="mt-2 pl-[18px] text-sm text-gray-500">{subtitle}</p>

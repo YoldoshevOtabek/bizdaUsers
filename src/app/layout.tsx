@@ -27,7 +27,11 @@ export const metadata: Metadata = {
   creator: siteConfig.name,
   publisher: siteConfig.name,
   category: "ecommerce",
-  icons: { icon: "/img/logo.png", shortcut: "/img/logo.png", apple: "/img/logo.png" },
+  icons: {
+    icon: [{ url: siteConfig.favicon, type: "image/x-icon", sizes: "any" }],
+    shortcut: siteConfig.favicon,
+    apple: siteConfig.favicon,
+  },
   alternates: { canonical: siteConfig.url },
   openGraph: {
     type: "website",

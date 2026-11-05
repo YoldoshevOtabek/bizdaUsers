@@ -304,7 +304,7 @@ export default function AuthModalProvider({
               <div className="inline-flex w-fit items-center rounded-xl bg-white px-3 py-2">
                 <Image
                   src="/img/logo.png"
-                  alt="Dealper"
+                  alt="Bizda"
                   width={110}
                   height={40}
                   style={{ height: 30, width: "auto" }}

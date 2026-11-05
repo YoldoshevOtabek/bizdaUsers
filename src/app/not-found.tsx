@@ -55,7 +55,7 @@ export default function NotFound() {
         {/* Bottom note */}
         <div className="mt-12 border-t border-gray-100 pt-6">
           <p className="text-sm text-gray-400">
-            <span className="font-bold text-[#4caf7d]">DEALPORT</span>
+            <span className="font-bold text-[#4caf7d]">BIZDA</span>
             {" "}— Xarid qilishning qulay manzili
           </p>
         </div>

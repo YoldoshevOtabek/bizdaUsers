@@ -4,7 +4,7 @@ import React from 'react'
 
 export const metadata = pageMeta(
   "Aloqa",
-  "Dealper bilan bog‘laning: savollar, buyurtma va yordam.",
+  "Bizda bilan bog‘laning: savollar, buyurtma va yordam.",
   "/contact",
 )
 

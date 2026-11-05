@@ -40,7 +40,7 @@ export default function AboutPage() {
                     Biz haqimizda
                 </span>
                 <h1 className="mt-5 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                    Dealper — xarid qilishning qulay manzili
+                    Bizda — xarid qilishning qulay manzili
                 </h1>
                 <p className="mt-4 leading-7 text-gray-500">
                     Biz eng sifatli mahsulotlarni qulay narxlarda taklif qilamiz.
