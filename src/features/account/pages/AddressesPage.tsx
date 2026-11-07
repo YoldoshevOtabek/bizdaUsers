@@ -142,6 +142,7 @@ export default function AddressesPage() {
       region,
       city: region,
       district: geoName(districtList, form.districtId),
+      mahalla:form?.mahallaId,
       street: form.street.trim(),
       house: form.house.trim() || undefined,
       isDefault: form.isDefault,
